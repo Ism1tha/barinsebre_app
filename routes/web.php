@@ -41,4 +41,27 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/menjador', function () {
+        return Inertia::render('Menjador');
+    })->name('menjador');
+    Route::get('/encomanar', function () {
+        return Inertia::render('Encomanar');
+    })->name('encomanar');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'admin'
+])->group(function () {
+    Route::get('/admin/settings', function () {
+        return Inertia::render('Admin/Settings');
+    })->name('admin.settings');
+    Route::get('/admin/comandes', function () {
+        return Inertia::render('Admin/Comandes');
+    })->name('admin.comandes');
+    Route::get('/reserves', function () {
+        return Inertia::render('Admin/Reserves');
+    })->name('admin.reserves');
 });
