@@ -1,5 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
+import '@fontsource/roboto';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -10,6 +11,8 @@ import PrimeVue from 'primevue/config';
 import "primevue/resources/themes/tailwind-light/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
+import moment from 'moment';
+import 'moment/dist/locale/ca';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -17,11 +20,14 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+        var myApp = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
-            .use(PrimeVue)
-            .mount(el);
+            .use(PrimeVue);
+        moment.locale('ca');
+        myApp.config.globalProperties.$moment = moment;
+        myApp.mount(el);
+        return myApp;
     },
     progress: {
         color: '#4B5563',
