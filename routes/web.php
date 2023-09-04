@@ -4,6 +4,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\SocialiteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,13 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/login2', function () {
+    return Inertia::render('Login2');
+})->name('login2');
+
+Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
 
 Route::middleware([
     'auth:sanctum',
