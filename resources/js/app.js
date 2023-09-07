@@ -8,13 +8,16 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 import PrimeVue from 'primevue/config';
-import "primevue/resources/themes/tailwind-light/theme.css";
+import "../theme/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
 import moment from 'moment';
 import 'moment/dist/locale/ca';
 
+import ToastService from 'primevue/toastservice';
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+import caPrimeVueLocale from '../theme/ca.json';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -23,13 +26,17 @@ createInertiaApp({
         var myApp = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
-            .use(PrimeVue);
+            .use(PrimeVue, {locale: caPrimeVueLocale.ca})
+            .use(ToastService);
         moment.locale('ca');
         myApp.config.globalProperties.$moment = moment;
         myApp.mount(el);
         return myApp;
     },
     progress: {
-        color: '#4B5563',
+        delay: 0,
+        color: '#ffffff',
+        includeCSS: true,
+        showSpinner: true,
     },
 });

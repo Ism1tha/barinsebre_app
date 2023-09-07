@@ -10,7 +10,7 @@ import TextInput from '@/Components/TextInput.vue';
 </script>
 
 <template>
-    <Head title="Log in" />
+    <Head title="Accedir" />
 
     <AuthenticationCard>
         <template #logo>
@@ -21,6 +21,9 @@ import TextInput from '@/Components/TextInput.vue';
             {{ status }}
         </div>
 
-        <a :href="route('google.login')" class="bg-blue-500">Accedeix amb el teu correu</a>
+        <a :href="route('google.login')" class="bg-green-500 hover:bg-green-600 text-white rounded block px-4 py-2">
+            <i class="pi pi-google"></i>
+            Accedeix amb el teu correu del centre
+        </a>
     </AuthenticationCard>
 </template>
