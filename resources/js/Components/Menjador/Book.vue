@@ -28,10 +28,9 @@
             <div class="border-t border-gray my-2 py-2">
                 <span class="text-blue-500 font-bold">Selecciona el primer plat del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
-                    <div class="shadow rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2"
+                    <div class="shadow rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
                         v-for="(item, index) in $page.props.menu.primer"
                         :class="food1_selected == index ? 'border-blue-500' : ''" @click="food1_selected = index">
-                        <i class="pi pi-check-circle text-green-500"></i>
                         {{ item.name }}
                     </div>
                 </div>
@@ -39,10 +38,9 @@
             <div class="border-t border-gray my-2 py-2">
                 <span class="text-blue-500 font-bold">Selecciona el segon plat del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
-                    <div class="shadow rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2"
+                    <div class="shadow rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
                         v-for="(item, index) in $page.props.menu.segon"
                         :class="food2_selected == index ? 'border-blue-500' : ''" @click="food2_selected = index">
-                        <i class="pi pi-check-circle text-green-500"></i>
                         {{ item.name }}
                     </div>
                 </div>
@@ -50,10 +48,9 @@
             <div class="border-t border-gray my-2 py-2">
                 <span class="text-blue-500 font-bold">Selecciona el postre del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
-                    <div class="shadow rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2"
+                    <div class="shadow rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
                         v-for="(item, index) in $page.props.menu.postre"
                         :class="food3_selected == index ? 'border-blue-500' : ''" @click="food3_selected = index">
-                        <i class="pi pi-check-circle text-green-500"></i>
                         {{ item.name }}
                     </div>
                 </div>
