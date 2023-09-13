@@ -32,7 +32,7 @@
     </div>
     <template v-if="can_order">
         <div class="border-t border-gray my-2 py-2">
-            <span class="text-blue-500 font-bold">Selecciona el torn per al que vols realitzar la comanda
+            <span class="text-gray-700 font-bold">Selecciona el torn per al que vols realitzar la comanda
                 d'entrepans:</span>
             <div class="grid md:grid-cols-4 gap-4">
                 <div class="rounded px-4 py-2 inline md:mb-4 text-gray-600 cursor-pointer border-2"
@@ -48,25 +48,19 @@
             </div>
         </div>
         <div class="border-t border-gray my-2 py-2">
-            <span class="text-blue-500 font-bold">Selecciona els entrepans que vols encomanar:</span>
-            <div class="grid grid-cols-10 gap-4" v-for="(item, index) in product_types">
+            <span class="text-gray-700 font-bold">Selecciona els entrepans que vols encomanar:</span>
+            <div class="grid gap-4" v-for="(item, index) in product_types">
                 <div
                     class="rounded border-2 px-4 py-2 inline md:mb-4 text-gray-600 flex justify-between items-center col-span-8">
                     <div>
-                        <i class="pi pi-list text-gray"></i>
-                        {{ item.name }} ({{ item.price }}€)
+                        <i class="pi pi-list text-gray mr-2"></i>
+                        <b class="text-primary-800">{{item.total}}</b> {{ item.name }} <span class="text-sm">({{ item.price }}€)</span>
                     </div>
                     <div class="flex items-center">
                         <button class="bg-green-500 hover:bg-green-800 rounded text-white px-4 py-1 mr-1"
                             @click="increaseTotal(index)"><i class="pi pi-plus" style="font-size: 0.5em;"></i></button>
                         <button class="bg-red-500 hover:bg-red-600 rounded text-white px-4 py-1"
                             @click="decreaseTotal(index)"><i class="pi pi-minus" style="font-size: 0.5em;"></i></button>
-                    </div>
-                </div>
-                <div
-                    class="rounded border-2 px-4 py-2 inline md:mb-4 text-gray-600 flex items-center align-center col-span-2">
-                    <div class="text-center w-full">
-                        {{ item.total }}
                     </div>
                 </div>
             </div>

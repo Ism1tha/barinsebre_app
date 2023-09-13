@@ -33,10 +33,10 @@
                         Plat 1 seleccionat: {{ JSON.parse(slotProps.data.products).food1 }}
                     </div>
                     <div class="bg-gray-100 text-gray-700 px-4 py-2 rounded my-2">
-                        Plat 2 seleccionat: {{ JSON.parse(slotProps.data.products).food1 }}
+                        Plat 2 seleccionat: {{ JSON.parse(slotProps.data.products).food2 }}
                     </div>
                     <div class="bg-gray-100 text-gray-700 px-4 py-2 rounded my-2">
-                        Postre seleccionat: {{ JSON.parse(slotProps.data.products).food1 }}
+                        Postre seleccionat: {{ JSON.parse(slotProps.data.products).food3 }}
                     </div>
                 </template>
             </DataTable>
