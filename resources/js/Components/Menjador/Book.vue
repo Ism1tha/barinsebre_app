@@ -26,7 +26,7 @@
                     per a apuntar-te.</p>
             </div>
             <div class="border-t border-gray my-2 py-2">
-                <span class="text-blue-500 font-bold">Selecciona el primer plat del teu menú:</span>
+                <span class="text-gray-700 font-bold">Selecciona el primer plat del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
                     <div class="rounded px-4 py-2 inline mb-2 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
                         v-for="(item, index) in $page.props.menu.primer"
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="border-t border-gray my-2 py-2">
-                <span class="text-blue-500 font-bold">Selecciona el segon plat del teu menú:</span>
+                <span class="text-gray-700 font-bold">Selecciona el segon plat del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
                     <div class="rounded px-4 py-2 inline mb-2 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
                         v-for="(item, index) in $page.props.menu.segon"
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="border-t border-gray my-2 py-2">
-                <span class="text-blue-500 font-bold">Selecciona el postre del teu menú:</span>
+                <span class="text-gray-700 font-bold">Selecciona el postre del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
                     <div class="rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
                         v-for="(item, index) in $page.props.menu.postre"
