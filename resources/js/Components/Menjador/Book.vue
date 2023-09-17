@@ -25,7 +25,7 @@
                     botó
                     per a apuntar-te.</p>
             </div>
-            <div class="border-t border-gray my-2 py-2">
+            <div class="border-t border-gray my-2 py-2" v-if="$page.props.menu.primer.length > 0">
                 <span class="text-gray-700 font-bold">Selecciona el primer plat del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
                     <div class="rounded px-4 py-2 inline mb-2 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray my-2 py-2">
+            <div class="border-t border-gray my-2 py-2" v-if="$page.props.menu.segon.length > 0">
                 <span class="text-gray-700 font-bold">Selecciona el segon plat del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
                     <div class="rounded px-4 py-2 inline mb-2 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray my-2 py-2">
+            <div class="border-t border-gray my-2 py-2" v-if="$page.props.menu.postre.length > 0">
                 <span class="text-gray-700 font-bold">Selecciona el postre del teu menú:</span>
                 <div class="grid md:grid-cols-4 gap-4">
                     <div class="rounded px-4 py-2 inline mb-4 border border-gray text-gray-600 cursor-pointer border-2 flex items-center justify-center"
@@ -98,7 +98,7 @@ export default {
     },
     methods: {
         validateForm() {
-            if (this.food1_selected == -1 || this.food2_selected == -1 || this.food3_selected == -1) {
+            if ((this.food1_selected == -1 && this.$page.props.menu.primer.length > 0) || (this.food2_selected == -1 && this.$page.props.menu.segon.length > 0) || (this.food3_selected == -1 && this.$page.props.menu.postre.length > 0)) {
                 this.$toast.add({
                     severity: 'error',
                     summary: 'Error',
@@ -110,12 +110,15 @@ export default {
             }
         },
         executeBooking() {
+            var food1 = this.food1_selected == -1 ? 'Sense primer plat' : this.$page.props.menu.primer[this.food1_selected].name;
+            var food2 = this.food2_selected == -1 ? 'Sense segon plat' : this.$page.props.menu.segon[this.food2_selected].name;
+            var food3 = this.food3_selected == -1 ? 'Sense postre' : this.$page.props.menu.postre[this.food3_selected].name;
             axios.post(route('menjador.add'), {
                 date: this.$moment().format('YYYY-MM-DD'),
                 products: {
-                    food1: this.$page.props.menu.primer[this.food1_selected].name,
-                    food2: this.$page.props.menu.segon[this.food2_selected].name,
-                    food3: this.$page.props.menu.postre[this.food3_selected].name,
+                    food1: food1,
+                    food2: food2,
+                    food3: food3
                 }
             }).then((response) => {
                 if (response.data.id) {
