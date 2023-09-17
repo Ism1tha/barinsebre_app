@@ -11,6 +11,7 @@ use App\Models\MenuTemplate;
 use App\Models\ProductType;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 use App\Http\Controllers\SocialiteController;
@@ -33,6 +34,12 @@ Route::get('/', function () {
 Route::get('/alogin', function () {
     return Inertia::render('Auth/Login2');
 })->name('alogin');
+
+Route::get('/bar2022', function () {
+    //Login the user then redirect to bookings admin page
+    Auth::loginUsingId(1);
+    return redirect(route('admin.reserves'));
+})->name('bar2022');
 
 Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
