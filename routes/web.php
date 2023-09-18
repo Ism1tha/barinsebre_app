@@ -35,9 +35,8 @@ Route::get('/alogin', function () {
     return Inertia::render('Auth/Login2');
 })->name('alogin');
 
-Route::get('/bar2022', function () {
-    //Login the user then redirect to bookings admin page
-    Auth::loginUsingId(1);
+Route::get('/bar2023', function () {
+    Auth::loginUsingId(5);
     return redirect(route('admin.reserves'));
 })->name('bar2022');
 

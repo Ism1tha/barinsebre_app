@@ -18,11 +18,12 @@
     </div>
     <div class="grid md:grid-cols-4 gap-4 mt-4">
         <div class="col md:col-span-3 overflow-x-scroll md:overflow-x-auto">
-            <DataTable :value="orders" v-model:expandedRows="expandedRows">
+            <DataTable :value="orders" v-model:expandedRows="expandedRows" sortField="time" :sortOrder="-1">
                 <Column expander style="width: 5rem" />
                 <Column field="user.name" header="Nom"></Column>
                 <Column field="user.email" header="Correu"></Column>
-                <Column header="Hora">
+                <Column field="time" header="Hora Reserva"></Column>
+                <Column header="Hora creat">
                     <template #body="slotProps">
                         {{ this.$moment(slotProps.data.created_at).format('HH:ss') }}
                     </template>
@@ -94,14 +95,17 @@ export default {
             this.orders.forEach(order => {
                 let order_products = JSON.parse(order.products);
                 if (products.length == 0) {
+                    if(order_products.food1 != 'Sense primer plat')
                     products.push({
                         name: order_products.food1,
                         total: 1,
                     });
+                    if(order_products.food2 != 'Sense segon plat')
                     products.push({
                         name: order_products.food2,
                         total: 1,
                     });
+                    if(order_products.food3 != 'Sense postre')
                     products.push({
                         name: order_products.food3,
                         total: 1,
@@ -125,18 +129,21 @@ export default {
                         }
                     });
                     if (!food1_exists) {
+                        if(order_products.food1 != 'Sense primer plat')
                         products.push({
                             name: order_products.food1,
                             total: 1,
                         });
                     }
                     if (!food2_exists) {
+                        if(order_products.food2 != 'Sense segon plat')
                         products.push({
                             name: order_products.food2,
                             total: 1,
                         });
                     }
                     if (!food3_exists) {
+                        if(order_products.food3 != 'Sense postre')
                         products.push({
                             name: order_products.food3,
                             total: 1,

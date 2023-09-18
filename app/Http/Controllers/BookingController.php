@@ -14,6 +14,7 @@ class BookingController extends Controller
         }
         $booking = new \App\Models\Booking();
         $booking->date = $request->date;
+        $booking->time = $request->time;
         $booking->products = json_encode($request->products);
         $booking->user_id = $request->user()->id;
         $booking->save();
