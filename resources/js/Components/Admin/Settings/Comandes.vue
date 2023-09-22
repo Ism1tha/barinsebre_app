@@ -60,8 +60,7 @@ export default{
             this.$toast.add({severity:'success', summary: 'Producte afegit', detail: 'El producte s\'ha afegit correctament.', life: 3000});
         },
         deleteProduct(index){
-            console.log(index);
-            axios.get(route('admin.settings.comandes.delete', this.products[index].id)).then(response => {
+            axios.post(route('admin.settings.comandes.delete', this.products[index].id)).then(response => {
                 this.products.splice(index, 1);
                 this.$toast.add({severity:'success', summary: 'Producte eliminat', detail: 'El producte s\'ha eliminat correctament.', life: 3000});
             });

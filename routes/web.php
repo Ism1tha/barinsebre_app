@@ -110,7 +110,7 @@ Route::middleware([
     Route::get('/admin/comandes/{date}/{turn}', [OrderController::class, 'index'])->name('admin.comandes.index');
     //Comandes
     Route::get('/admin/comandes/add', [ProductTypeController::class, 'new'])->name('admin.settings.comandes.add');
-    Route::get('/admin/comandes/delete/{id}', [ProductTypeController::class, 'delete'])->name('admin.settings.comandes.delete');
+    Route::post('/admin/comandes/delete/{id}', [ProductTypeController::class, 'delete'])->name('admin.settings.comandes.delete');
     Route::post('/admin/comandes/update', [SettingsController::class, 'updateComandes'])->name('admin.settings.comandes.update');
     //MenuTemplates
     Route::get('/admin/menjador/menu_templates', [MenuTemplateController::class, 'index'])->name('admin.settings.menjador.menu_templates');

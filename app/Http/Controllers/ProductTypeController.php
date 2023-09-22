@@ -13,7 +13,7 @@ class ProductTypeController extends Controller
         return response()->json(['id' => $productType->id]);
     }
 
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         $productType = \App\Models\ProductType::find($id);
         $productType->delete();
